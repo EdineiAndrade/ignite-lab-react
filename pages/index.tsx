@@ -14,10 +14,11 @@ export function Event() {
           {slug 
           ? <Video lessonSlug={slug}/> 
           : <div className="flex-1"> 
+
             <div className="flex items-center">
 
-            <h1></h1>''
-            
+               <h1>Escolha uma Aula parra assistir</h1>
+       
             </div>
           
           </div>
