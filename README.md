@@ -15,7 +15,7 @@
 
 ### Layout
 
-<img src="./src/img/layout.png" />
+<img src="./src/assets/layout.png" />
 
 # Links das Bibliotecas Utilizadas
 
