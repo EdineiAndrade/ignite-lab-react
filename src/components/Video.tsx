@@ -1,46 +1,19 @@
-import { gql, useQuery } from "@apollo/client";
 import { CaretRight, DiscordLogo, FileArrowDown, FileImage, Lightning } from "phosphor-react";
+import { useGetLessonBySlugQuery } from "../graphql/generated";
 import { PlayerTb } from "./player";
 
-const GET_LESSONS_BY_SLUG_QUERY = gql `
-    query GetLessonBySlug	($slug:String) {
-        lesson(where: {slug: $slug}) {
-          title
-          videoId
-          description
-            teacher {
-                name
-                bio
-                avatarURL
-            }
-  }
-}
-`
-interface GetLessonBySlugResponse {
-    lesson:{
-        title: string;
-        videoId: string;
-        description: string;
-        teacher:{
-            name: string;
-            bio: string;
-            avatarURL: string;
-        }
-    } 
-
-}
 interface VideoProps{
     lessonSlug: string;
 }
 
 export function Video(props:VideoProps ){
-   const { data} = useQuery<GetLessonBySlugResponse>(GET_LESSONS_BY_SLUG_QUERY,{
-    variables:{
+   const {data} = useGetLessonBySlugQuery({
+        variables:{
         slug:props.lessonSlug,
-    }
+    }   
    })
 
-   if(!data){
+   if(!data || !data.lesson){
     return(
         <div className="flex-1">
             <p >Carregando...</p>
@@ -67,25 +40,23 @@ export function Video(props:VideoProps ){
                 <p className="mt-4 text-gray-200 leading-relaxed">
                     {data.lesson.description}
                     </p>
-                    <div className="flex item-center gap-4 mt-6">
-                        <img 
-                        className="h-16 w-16 rounded-full border-2 border-blue-500"
-                        src={data.lesson.teacher.avatarURL} 
-                        alt="" 
-                        />
-                        <div className="leading-relaxed">
-                            <strong className="font-bold text-2xl block">
-                            {data.lesson.teacher.name}
-                            </strong>
-                            <span className="text-gray-200 text-sm block">
-                            {data.lesson.teacher.bio}
-                            </span>
-                        </div>
-
-                        
-                    </div>
-
-
+                        {data.lesson.teacher && (
+                            <div className="flex item-center gap-4 mt-6">
+                            <img 
+                            className="h-16 w-16 rounded-full border-2 border-blue-500"
+                            src={data.lesson.teacher.avatarURL} 
+                            alt="" 
+                            />
+                            <div className="leading-relaxed">
+                                <strong className="font-bold text-2xl block">
+                                {data.lesson.teacher.name}
+                                </strong>
+                                <span className="text-gray-200 text-sm block">
+                                {data.lesson.teacher.bio}
+                                </span>
+                            </div>
+                            </div>
+                        )}
                 </div>
                 <div className="flex flex-col gap-4">
                     <a href="" className="p-4 text-sm bg-green-500 flex items-center rounded font-bold uppercase gap-2 justify-center  hover:bg-green-700 transition-colors">
@@ -137,4 +108,8 @@ export function Video(props:VideoProps ){
         </div>
     
     )
+}
+
+function useGetLessonsBySlugQuery(arg0: { variables: { slug: string; }; }): { data: any; } {
+    throw new Error("Function not implemented.");
 }
