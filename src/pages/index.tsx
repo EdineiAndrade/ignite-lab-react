@@ -4,7 +4,7 @@ import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
 import { useCreateSubscriberMutation } from "../graphql/generated";
-import { bgCode} from '../assets/code.png'
+import  bgCode from '../assets/code.png'
 export function Subscribe (){
     const navigate = useNavigate()
     const [name, setName] = useState('');
