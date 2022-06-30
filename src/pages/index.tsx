@@ -1,6 +1,34 @@
+import { gql, useMutation } from "@apollo/client";
+import { useState, FormEvent} from "react";
 import { Logo } from "../components/Logo";
 
-export function Home (){
+
+const CREATE_SUBSCRIBE_MUTATION = gql `
+    mutation CreateSubscriber($name:String!, $email:String!) {
+    createSubscriber(data: {name: $name, email: $email}) {
+    id
+  }
+}
+
+`
+
+export function Subscribe (){
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+
+    const [createSubscriber] = useMutation(CREATE_SUBSCRIBE_MUTATION)
+
+    function handleSubscribe(event: FormEvent){
+        event.preventDefault();
+
+        createSubscriber({
+            variables:{
+                name,
+                email,
+            }
+        })
+    }
+
     return(
         <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col">
             <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
@@ -15,16 +43,18 @@ export function Home (){
                 </div>
                 <div className="p-8 bg-gray-700 border border-gray-500 rounded">
                     <strong className="tx-xl2 mb-6 block">Inscreva-se gratuitamente</strong>
-                    <form action="" className="flex flex-col gap-2 w-full" >
+                    <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full" >
                         <input 
                         className="bg-gray-900 rounded px-5 h-14"
                         type="text"  
                         placeholder="digite seu nome completo"
+                        onChange={event => setName(event.target.value)}
                         />
                         <input 
                         className="bg-gray-900 rounded px-5 h-14"
                         type="email"  
                         placeholder="digite seu email"
+                        onChange={event => setEmail(event.target.value)}
                         />
                         <button
                         className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors "
