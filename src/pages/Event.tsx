@@ -1,4 +1,3 @@
-import { ArrowsOut } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import { Heder } from "../components/Heder";
 import { Sidebar } from "../components/Sidebar";
