@@ -1,3 +1,4 @@
+import { CaretDoubleRight } from "phosphor-react";
 import { useParams } from "react-router-dom";
 import { Heder } from "../components/Heder";
 import { Sidebar } from "../components/Sidebar";
@@ -13,13 +14,15 @@ export function Event() {
           {slug 
           ? <Video lessonSlug={slug}/> 
           : <div className="flex-1"> 
+              <div className={` ${slug ? 'hidden display:none' : 'flex w-full h-full justify-center items-center' }`}>
+                
+                  <div className="text-xl font-bold h-[60px] w-full md:text-2xl transition-colors border md:mx-50 md:rounded-2xl bg-purple-600 md:w-[520px] md:h-[100px] border-gray-900 text-gray-700 border-spacing-4 mt-100 flex justify-center items-center md:justify-between md:p-8 md:m-8 hover:border-green-700 hover:bg-green-400 hover:text-gray-900">
 
-            <div className="flex items-center">
+                    <h1>Escolha uma Aula parra assistir</h1>
+                    <CaretDoubleRight size={35} className="hidden display:none md:flex md:flex-color"/>
+                  </div>
+              </div>
 
-               <h1>Escolha uma Aula parra assistir</h1>
-       
-            </div>
-          
           </div>
           }
           <Sidebar/>

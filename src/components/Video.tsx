@@ -15,11 +15,10 @@ export function Video(props:VideoProps ){
 
    if(!data || !data.lesson){
     return(
-        <div className="flex-1">
+        <div className="flex-1 text-2xl">
             <p >Carregando...</p>
         </div>
-    )
-   }
+         )}
    
     return(
         <div className="flex-1">
@@ -34,12 +33,12 @@ export function Video(props:VideoProps ){
            </div>
 
            <div className="p-8 max-w-[1100px] mx-auto">
-            <div className="block items-center gap-10 md:flex md:items-start md:gap-16">
+            <div className="block items-center gap-10 md:flex md:items-start md:gap-5 md:ml-10">
                 <div className=" justify-center items-center md:flex-1 ">
                     <h1 className="text-sm font-bold md:text-2xl ">
                         {data.lesson.title}
                     </h1>
-                <p className="flex mt-2 text-gray-200 leading-relaxed text-sm text-ellipsis max-w-[300px] text-justify indent-1 md:text-xl md:mt-4 md:max-w-[600px]">
+                <p className="flex mt-2 text-gray-200 leading-relaxed text-sm text-ellipsis max-w-[300px] text-justify indent-1 md:mt-4 md:max-w-[600px]">
                     {data.lesson.description}
                     </p>
                         {data.lesson.teacher && (   
@@ -50,7 +49,7 @@ export function Video(props:VideoProps ){
                             alt="" 
                             />
                             <div className=" flex flex-col item-center justify-center md:leading-relaxed ">
-                                <strong className="font-bold text-[12px] md:text-2xl md:block">
+                                <strong className="font-bold text-[12px] md:text-xl md:block">
                                 {data.lesson.teacher.name}
                                 </strong>
                                 <span className="text-gray-200 max-w-[300px] md:text-sm md:max-w-[600px] first-letter:md:block">
@@ -72,7 +71,7 @@ export function Video(props:VideoProps ){
                 </div>
             </div>
             
-            <div className=" gap-2 mt-2 flex flex-col md:gap-8 md:mt-20 md:flex-row md:justify-center md:gird grid-cols-3  ">
+            <div className=" gap-2 mt-2 flex flex-col md:gap-8 md:mt-10 md:flex-row md:justify-center md:gird grid-cols-3  ">
                 <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-2 hover:bg-gray-600 transition-colors max-w-[350px] max-h-[80px]md:max-w-[600px] md:max-h-[600px]md:gap-4">
                     <div className="bg-green-700 p-2 flex items-center">
                         <FileArrowDown size={40}/>
