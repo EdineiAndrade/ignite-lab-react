@@ -11,8 +11,7 @@ export function PlayerTb(props:VideoIdProps) {
       event.target.pauseVideo();
     }
     const opts: YouTubeProps['opts'] = {
-      height: '594',
-      width: '937',
+      
       playerVars: {
         autoplay: 1,
       },
