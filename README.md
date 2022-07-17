@@ -11,7 +11,7 @@
 
 ## Hospedagem
 
-- Vercel 👉 Link [ignite-lab-react](https://vercel.com/edineiandrade/ignite-lab-react)
+- Vercel 👉 Link [ignite-lab-react](https://ignite-lab-react.vercel.app/)
 
 ### Layout
 
